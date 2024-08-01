@@ -50,8 +50,8 @@ function KareninAlani(kenaruzunlugu) {
 	4. Hesaplanan çemberin çevresi döndürülecektir.
 */
 
-function CemberinCevresi(yaricap,pi) {
-  return 2* yaricap * pi
+function CemberinCevresi(yaricap) {
+  return 2 * pi * yaricap ;
 }
 
 /* (Oto test yok) Yukarıdaki CemberinCevresi fonksiyonunu yarıçap = 5 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
@@ -65,7 +65,7 @@ function CemberinCevresi(yaricap,pi) {
 */
 
 function CemberinAlani(yaricap,pi) {
-  return Math.pow(yaricap,2)*pi
+  return Math.pow(yaricap,2) * pi ;
 }
 
 /* (Oto test yok) Yukarıdaki CemberinAlani fonksiyonunu yarıçap = 15 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
@@ -94,16 +94,17 @@ function CemberinAlani(yaricap,pi) {
 let enbuyuk = sayilar[0];
 let enkucuk = sayilar[0];
 
-for ( let i=0; i<sayilar.length; i++) {
-  if (sayilar[i]>enbuyuk) {
-    return enbuyuk = sayilar[i]
+for ( let i=0; i< sayilar.length; i++) {
+  if (sayilar[i] > enbuyuk) {
+    enbuyuk = sayilar[i] ;
   } 
-   if (sayilar[i]< enkucuk){
-    return enkucuk= sayilar[i]; 
+   if (sayilar[i] < enkucuk) {
+    enkucuk = sayilar[i] ; 
   }
 }
   
 // 3b çözümü:
+let ucetambolunenler = [];
 
 sayilar.forEach(sayi => {
   if (sayi %3 === 0) {
@@ -123,13 +124,23 @@ let besyuzdenkucuksayilar = sayilar.filter(sayi => sayi<500)
 
 // 3e çözümü
 
-let siralisayilar = besyuzdenkucuksayilar.sort((a,b)=> a-b)
+let siralisayilar = besyuzdenkucuksayilar.sort((a,b) => a-b)
 
 // 3f çözümü
 
-let tekraredensayilar = {};
+let tekrarSayilari = {};
 
-sayilar.forEach(sayi => tekraredensayilar[sayi] = (tekraredensayilar[sayi] || 0) + 1);
+sayilar.forEach(sayi => {
+  tekrarSayilari[sayi] = (tekrarSayilari[sayi] || 0) + 1;
+}); 
+
+let tekraredensayilar = [];
+for ( let sayi in tekrarSayilari) {
+  if (tekrarSayilari[sayi] > 1) {
+    let tekrarEdenString = `${sayi} sayısı ${tekrarSayilari[sayi]} kere tekrar edilmiştir`;
+    tekraredensayilar.push(tekrarEdenString)
+  }
+}
 
 
 /*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
